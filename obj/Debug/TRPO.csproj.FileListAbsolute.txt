@@ -1,0 +1,17 @@
+C:\Users\MSI\source\repos\TRPO\TRPO\bin\Debug\TRPO.exe.config
+C:\Users\MSI\source\repos\TRPO\TRPO\bin\Debug\TRPO.exe
+C:\Users\MSI\source\repos\TRPO\TRPO\bin\Debug\TRPO.pdb
+C:\Users\MSI\source\repos\TRPO\TRPO\obj\Debug\TRPO.csprojAssemblyReference.cache
+C:\Users\MSI\source\repos\TRPO\TRPO\obj\Debug\TRPO.Form2.resources
+C:\Users\MSI\source\repos\TRPO\TRPO\obj\Debug\TRPO.Properties.Resources.resources
+C:\Users\MSI\source\repos\TRPO\TRPO\obj\Debug\TRPO.csproj.GenerateResource.cache
+C:\Users\MSI\source\repos\TRPO\TRPO\obj\Debug\TRPO.csproj.CoreCompileInputs.cache
+C:\Users\MSI\source\repos\TRPO\TRPO\obj\Debug\TRPO.exe
+C:\Users\MSI\source\repos\TRPO\TRPO\obj\Debug\TRPO.pdb
+C:\Users\MSI\source\repos\TRPO\TRPO\obj\Debug\TRPO.Authorization.resources
+C:\Users\MSI\source\repos\TRPO\TRPO\obj\Debug\TRPO.Registration.resources
+C:\Users\MSI\source\repos\TRPO\TRPO\obj\Debug\TRPO.Teachers.resources
+C:\Users\MSI\source\repos\TRPO\TRPO\obj\Debug\TRPO.Pupils.resources
+C:\Users\MSI\source\repos\TRPO\TRPO\obj\Debug\TRPO.AddPupil.resources
+C:\Users\MSI\source\repos\TRPO\TRPO\obj\Debug\TRPO.AddTeacher.resources
+C:\Users\MSI\source\repos\TRPO\TRPO\obj\Debug\TRPO.Journals.resources
