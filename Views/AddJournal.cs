@@ -24,6 +24,7 @@ namespace School
         {
             InitializeComponent();
             if (Status.Journal == true) { materialLabel6.Visible = false;postComboBox.Visible = false; }
+            else { materialLabel6.Visible = true; postComboBox.Visible = true; }
             if (Status.Update == true&&Status.Journal==true)
             {
                 Event = _eventService.GetEvent().FirstOrDefault(x => x.ID == Status.ID);

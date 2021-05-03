@@ -53,9 +53,14 @@
             this.deleteButton = new MaterialSkin.Controls.MaterialButton();
             this.updateButton = new MaterialSkin.Controls.MaterialButton();
             this.addButton = new MaterialSkin.Controls.MaterialButton();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.findTextBox = new MaterialSkin.Controls.MaterialTextBox();
+            this.findRadioButton = new MaterialSkin.Controls.MaterialRadioButton();
+            this.cancelRadioButton = new MaterialSkin.Controls.MaterialRadioButton();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // teachersListView
@@ -80,7 +85,7 @@
             this.columnHeader11,
             this.columnHeader12,
             this.columnHeader13});
-            this.tableLayoutPanel1.SetColumnSpan(this.teachersListView, 3);
+            this.tableLayoutPanel1.SetColumnSpan(this.teachersListView, 4);
             this.teachersListView.ContextMenuStrip = this.contextMenuStrip1;
             this.teachersListView.Depth = 0;
             this.teachersListView.FullRowSelect = true;
@@ -91,7 +96,7 @@
             this.teachersListView.MouseState = MaterialSkin.MouseState.OUT;
             this.teachersListView.Name = "teachersListView";
             this.teachersListView.OwnerDraw = true;
-            this.teachersListView.Size = new System.Drawing.Size(1154, 498);
+            this.teachersListView.Size = new System.Drawing.Size(1154, 490);
             this.teachersListView.TabIndex = 0;
             this.teachersListView.UseCompatibleStateImageBehavior = false;
             this.teachersListView.View = System.Windows.Forms.View.Details;
@@ -211,21 +216,23 @@
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.Controls.Add(this.deleteButton, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.updateButton, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.addButton, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.teachersListView, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 3, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 69);
             this.tableLayoutPanel1.MinimumSize = new System.Drawing.Size(400, 200);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.97473F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.02527F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1160, 554);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.25623F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.74377F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1160, 562);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // deleteButton
@@ -237,11 +244,11 @@
             this.deleteButton.DrawShadows = true;
             this.deleteButton.HighEmphasis = true;
             this.deleteButton.Icon = null;
-            this.deleteButton.Location = new System.Drawing.Point(887, 510);
+            this.deleteButton.Location = new System.Drawing.Point(563, 502);
             this.deleteButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.deleteButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(158, 38);
+            this.deleteButton.Size = new System.Drawing.Size(158, 54);
             this.deleteButton.TabIndex = 6;
             this.deleteButton.Text = "Удалить";
             this.deleteButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -258,11 +265,11 @@
             this.updateButton.DrawShadows = true;
             this.updateButton.HighEmphasis = true;
             this.updateButton.Icon = null;
-            this.updateButton.Location = new System.Drawing.Point(500, 510);
+            this.updateButton.Location = new System.Drawing.Point(306, 502);
             this.updateButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.updateButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(158, 38);
+            this.updateButton.Size = new System.Drawing.Size(158, 54);
             this.updateButton.TabIndex = 5;
             this.updateButton.Text = "Обновить";
             this.updateButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -279,11 +286,11 @@
             this.addButton.DrawShadows = true;
             this.addButton.HighEmphasis = true;
             this.addButton.Icon = null;
-            this.addButton.Location = new System.Drawing.Point(114, 510);
+            this.addButton.Location = new System.Drawing.Point(49, 502);
             this.addButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.addButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(158, 38);
+            this.addButton.Size = new System.Drawing.Size(158, 54);
             this.addButton.TabIndex = 4;
             this.addButton.Text = "Добавить";
             this.addButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -291,11 +298,83 @@
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.62924F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.37076F));
+            this.tableLayoutPanel2.Controls.Add(this.findTextBox, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.findRadioButton, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.cancelRadioButton, 1, 1);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(774, 499);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(383, 60);
+            this.tableLayoutPanel2.TabIndex = 7;
+            // 
+            // findTextBox
+            // 
+            this.findTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.findTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.findTextBox.Depth = 0;
+            this.findTextBox.Font = new System.Drawing.Font("Roboto", 12F);
+            this.findTextBox.Location = new System.Drawing.Point(3, 3);
+            this.findTextBox.MaxLength = 50;
+            this.findTextBox.MouseState = MaterialSkin.MouseState.OUT;
+            this.findTextBox.Multiline = false;
+            this.findTextBox.Name = "findTextBox";
+            this.findTextBox.Size = new System.Drawing.Size(275, 50);
+            this.findTextBox.TabIndex = 0;
+            this.findTextBox.Text = "";
+            // 
+            // findRadioButton
+            // 
+            this.findRadioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.findRadioButton.AutoSize = true;
+            this.findRadioButton.Depth = 0;
+            this.findRadioButton.Location = new System.Drawing.Point(281, 0);
+            this.findRadioButton.Margin = new System.Windows.Forms.Padding(0);
+            this.findRadioButton.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.findRadioButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.findRadioButton.Name = "findRadioButton";
+            this.findRadioButton.Ripple = true;
+            this.findRadioButton.Size = new System.Drawing.Size(102, 30);
+            this.findRadioButton.TabIndex = 1;
+            this.findRadioButton.TabStop = true;
+            this.findRadioButton.Text = "Найти";
+            this.findRadioButton.UseVisualStyleBackColor = true;
+            this.findRadioButton.Click += new System.EventHandler(this.findRadioButton_Click);
+            // 
+            // cancelRadioButton
+            // 
+            this.cancelRadioButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelRadioButton.Depth = 0;
+            this.cancelRadioButton.Location = new System.Drawing.Point(281, 30);
+            this.cancelRadioButton.Margin = new System.Windows.Forms.Padding(0);
+            this.cancelRadioButton.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.cancelRadioButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.cancelRadioButton.Name = "cancelRadioButton";
+            this.cancelRadioButton.Ripple = true;
+            this.cancelRadioButton.Size = new System.Drawing.Size(102, 30);
+            this.cancelRadioButton.TabIndex = 2;
+            this.cancelRadioButton.TabStop = true;
+            this.cancelRadioButton.Text = "Отмена";
+            this.cancelRadioButton.UseVisualStyleBackColor = true;
+            this.cancelRadioButton.Click += new System.EventHandler(this.cancelRadioButton_Click);
+            // 
             // TeachersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1172, 629);
+            this.ClientSize = new System.Drawing.Size(1172, 637);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MinimumSize = new System.Drawing.Size(650, 330);
             this.Name = "TeachersForm";
@@ -303,6 +382,8 @@
             this.Text = "Учителя";
             this.contextMenuStrip1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -334,5 +415,9 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private MaterialSkin.Controls.MaterialTextBox findTextBox;
+        private MaterialSkin.Controls.MaterialRadioButton findRadioButton;
+        private MaterialSkin.Controls.MaterialRadioButton cancelRadioButton;
     }
 }

@@ -3,6 +3,7 @@ using MaterialSkin.Controls;
 using School.Services;
 using Serilog;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace School
@@ -29,21 +30,26 @@ namespace School
             pupilsListView.Items.Clear();
             pupilsListView.GridLines = true;
             var pupils = _pupilService.GetPupil();
-
+            string disposal = "";
+            DateTime date = new DateTime(2000, 01, 1, 0, 0, 0);
             foreach (var pupil in pupils)
             {
+                if (pupil.DateOfDisposal != date)
+                {
+                    disposal = pupil.DateOfDisposal.ToString("dd.MM.yyyy");
+                }
                 var lvi = new ListViewItem(new[]
                 {
                     pupil.ID.ToString(),
                     pupil.FullName,
                     pupil.DateOfBirth.ToString("dd.MM.yyyy"),
                     pupil.Years.ToString(),
-                    pupil.Grade.ToString(),
+                    pupil.Grade.ToString() + "класс",
                     pupil.District,
                     pupil.Social,
                     pupil.PhoneNumb,
                     pupil.DateOfReceipt.ToString("dd.MM.yyyy"),
-                    pupil.DateOfDisposal.ToString("dd.MM.yyyy"),
+                    disposal,
                     pupil.Parent,
                     pupil.PhoneNumbParent
                 }) ;
@@ -217,6 +223,47 @@ namespace School
             }
             else { MessageBox.Show("Выберте одну запись которую хотите отредактировать.",
                     "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        }
+        private void findRadioButton_Click(object sender, EventArgs e)
+        {
+            if (findTextBox.Text == "")
+            {
+                MessageBox.Show("Поле для пойска пустое",
+                "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            List<ListViewItem> mass = new List<ListViewItem>();
+            foreach (ListViewItem itm in pupilsListView.Items)
+            {
+                for (int i = 0; i < itm.SubItems.Count; i++)
+                {
+                    if (itm.SubItems[i].Text.IndexOf(findTextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        mass.Add(itm);
+                    }
+                }
+            }
+            if (mass.Count == 0)
+            {
+                MessageBox.Show("Совпадений не найдено",
+                "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            pupilsListView.Items.Clear();
+            for (int i = 0; i < mass.Count; i++)
+            {
+                if (pupilsListView.Items.Contains(mass[i]))
+                {
+                    continue;
+                }
+                pupilsListView.Items.Add(mass[i]);
+            }
+        }
+
+        private void cancelRadioButton_Click(object sender, EventArgs e)
+        {
+            findTextBox.Text = null;
+            FillPupilList();
         }
     }
 }

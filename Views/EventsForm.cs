@@ -119,9 +119,10 @@ namespace School
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            AddJournal add = new AddJournal();
-            add.Text = "Добавить событие";
-            Status.Journal = true;
+            AddJournal add = new AddJournal
+            {
+                Text = "Добавить событие"
+            };
             if (add.ShowDialog() != DialogResult.OK)
             {
                 return;
@@ -171,9 +172,10 @@ namespace School
                     {
                         Status.Update = true;
                         Status.ID = idx;
-                        Status.Journal = true;
-                        AddJournal update = new AddJournal();
-                        update.Text = "Обновить событие";
+                        AddJournal update = new AddJournal
+                        {
+                            Text = "Обновить событие"
+                        };
                         if (update.ShowDialog() != DialogResult.OK)
                         {
                             Status.Update = false;

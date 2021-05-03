@@ -2,13 +2,6 @@
 using MaterialSkin.Controls;
 using Serilog;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace School
@@ -55,6 +48,7 @@ namespace School
         private void eventsButton_Click(object sender, EventArgs e)
         {
             Log.Information($"Пользователь {Status.User} начал просмотр информации на форме \"События\".");
+            Status.Journal = true;
             EventsForm eventForm = new EventsForm();
             Hide();
             eventForm.ShowDialog();
@@ -64,6 +58,7 @@ namespace School
         private void tasksButton_Click(object sender, EventArgs e)
         {
             Log.Information($"Пользователь {Status.User} начал просмотр информации на форме \"Задачи\".");
+            Status.Journal = false;
             TasksForm taskForm = new TasksForm();
             Hide();
             taskForm.ShowDialog();

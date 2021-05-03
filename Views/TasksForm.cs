@@ -131,7 +131,6 @@ namespace School
             {
                 Text = "Добавить задачу"
             };
-            Status.Journal = false;
             if (add.ShowDialog() != DialogResult.OK)
             {
                 return;
@@ -186,7 +185,6 @@ namespace School
                     {
                         Status.Update = true;
                         Status.ID = idx;
-                        Status.Journal = false;
                         AddJournal update = new AddJournal
                         {
                             Text = "Обновить событие"

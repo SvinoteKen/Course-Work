@@ -29,12 +29,12 @@ namespace School
                 postComboBox.SelectedItem = Teacher.Post;
                 dateOfBirthText.Text = Teacher.DateOfBirth.ToString("dd.MM.yyyy");
                 yearsText.Text = Teacher.Years.ToString();
-                experienceText.Text = Teacher.Experience;
+                experienceText.Text = Teacher.Experience.ToString();
                 yearOfCertificationText.Text = Teacher.YearOfCertification.ToString();
                 yearOfCoursesText.Text = Teacher.YearOfCourses.ToString();
                 phoneNumbText.Text = Teacher.PhoneNumb;
                 emailText.Text = Teacher.Email;
-                loadText.Text = Teacher.Load;
+                loadText.Text = Teacher.Load.ToString();
                 vacationFromText.Text = Teacher.VacationFrom.ToString("dd.MM.yyyy");
                 vacationToText.Text = Teacher.VacationTo.ToString("dd.MM.yyyy");
                 sickFromText.Text = Teacher.SickFrom.ToString("dd.MM.yyyy");
@@ -46,15 +46,15 @@ namespace School
         private void okButton_Click(object sender, EventArgs e)
         {
             if (!test.TestFullName(fullNameText.Text)|| !test.TestPhonNumb(phoneNumbText.Text)|| !test.TestDateOfBirth(dateOfBirthText.Text)
-                || !test.TestyearOfCertificationAndCourses(yearOfCertificationText.Text, yearOfCoursesText.Text)|| !test.TestYear(dateOfBirthText.Text, yearsText.Text)) 
+                || !test.TestyearOfCertificationAndCourses(yearOfCertificationText.Text, yearOfCoursesText.Text)|| !test.TestYear(dateOfBirthText.Text, yearsText.Text)
+                || !test.TestEmail(emailText.Text)) 
             {
                 return;
             }
-            DateTime dateTime;
-            bool succeess1 = DateTime.TryParse(sickFromText.Text, out dateTime);
-            bool succeess2 = DateTime.TryParse(sickToText.Text, out dateTime);
-            bool succeess3 = DateTime.TryParse(vacationFromText.Text, out dateTime);
-            bool succeess4 = DateTime.TryParse(vacationToText.Text, out dateTime);
+            bool succeess1 = DateTime.TryParse(sickFromText.Text, out _);
+            bool succeess2 = DateTime.TryParse(sickToText.Text, out _);
+            bool succeess3 = DateTime.TryParse(vacationFromText.Text, out _);
+            bool succeess4 = DateTime.TryParse(vacationToText.Text, out _);
             if (!succeess1 || !succeess2 || !succeess3 || !succeess4 )
             {
                 MessageBox.Show("Поля \"Отпуск\" и \"Больничный\" должно иметь такой вид: \"dd.mm.yyyy\"",
@@ -68,6 +68,18 @@ namespace School
                         "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if (!double.TryParse(loadText.Text, out _)) 
+            {
+                MessageBox.Show("Поле \"Нагрузка\" имеет неверный формат",
+                        "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!int.TryParse(experienceText.Text,out _)) 
+            {
+                MessageBox.Show("Поле \"Пед. стаж\" имеет неверный формат",
+                            "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             var id = _teacherService.GetMaxId();
             Teacher = new Teacher
             {
@@ -76,12 +88,12 @@ namespace School
                 Post = postComboBox.Text,
                 DateOfBirth = DateTime.Parse(dateOfBirthText.Text),
                 Years = int.Parse(yearsText.Text),
-                Experience = experienceText.Text,
+                Experience = int.Parse(experienceText.Text),
                 YearOfCertification = int.Parse(yearOfCertificationText.Text),
                 YearOfCourses = int.Parse(yearOfCoursesText.Text),
                 PhoneNumb = phoneNumbText.Text,
                 Email = emailText.Text,
-                Load = loadText.Text,
+                Load = double.Parse(loadText.Text),
                 VacationFrom = DateTime.Parse(vacationFromText.Text),
                 VacationTo = DateTime.Parse(vacationToText.Text),
                 SickFrom = DateTime.Parse(sickFromText.Text),

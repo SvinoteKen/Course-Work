@@ -17,7 +17,6 @@ namespace School.Services
 {
     class AuthService : IAuthService
     {
-        private readonly IUnitOfWork _unitOfWork = new UnitOfWork();
         private List<Account> _account = new List<Account>();
         public IEnumerable<Account> GetListAccounts()
         {
@@ -25,11 +24,11 @@ namespace School.Services
         }
         public IEnumerable<Account> GetAccounts()
         {
-            if (!File.Exists("login.json"))
+            if (!File.Exists("account.json"))
             {
                 return null;
             }
-            using (var f = File.OpenText("login.json"))
+            using (var f = File.OpenText("account.json"))
             {
                 var json = f.ReadToEnd();
                 _account = JsonConvert.DeserializeObject<Account[]>(json,
@@ -70,7 +69,7 @@ namespace School.Services
             var accounts = GetListAccounts();
             var json = JsonConvert.SerializeObject(accounts, Formatting.Indented,
                             new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
-            using (var f = File.CreateText("login.json"))
+            using (var f = File.CreateText("account.json"))
             {
                 f.Write(json);
             }

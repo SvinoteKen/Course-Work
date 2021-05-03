@@ -4,6 +4,10 @@ using School.Services;
 using System;
 using Serilog;
 using System.Windows.Forms;
+using Cyriller;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace School
 {
     public partial class TeachersForm : MaterialForm
@@ -26,14 +30,20 @@ namespace School
         {
             teachersListView.Items.Clear();
             teachersListView.GridLines = true;
+            var result = new CyrNumber();
             var teachers = _teacherService.GetTeacher();
             foreach (var teacher in teachers)
             {
                 TimeSpan timeSpan = new TimeSpan();
+                string hour = "";
+                string year = "";
                 timeSpan = teacher.VacationTo - teacher.VacationFrom;
                 var Vacation = "с "+teacher.VacationFrom.ToString("dd.MM.yyyy") + " по "+teacher.VacationTo.ToString("dd.MM.yyyy") +" "+timeSpan.Days+" д.";
                 timeSpan = teacher.SickTo - teacher.SickFrom;
                 var Sick = "с " + teacher.SickFrom.ToString("dd.MM.yyyy") + " по " + teacher.SickTo.ToString("dd.MM.yyyy") + " " + timeSpan.Days + " д.";
+                hour = result.Case(Int64.Parse(((int)teacher.Load).ToString()), "час", "часа", "часов");
+                year = result.Case(Int64.Parse((teacher.Experience).ToString()), "год", "года", "лет");
+                
                 var lvi = new ListViewItem(new[]
                 {
                     teacher.ID.ToString(),
@@ -42,11 +52,11 @@ namespace School
                     teacher.Rank,
                     teacher.DateOfBirth.ToString("dd.MM.yyyy"),
                     teacher.Years.ToString(),
-                    teacher.Experience.ToString(),
+                    teacher.Experience.ToString()+ " " +year,
                     teacher.YearOfCertification.ToString(),
                     teacher.YearOfCourses.ToString(),
                     teacher.PhoneNumb+", "+teacher.Email,
-                    teacher.Load,
+                    teacher.Load +" "+hour,
                     Vacation,
                     Sick
                 });
@@ -78,8 +88,10 @@ namespace School
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            AddTeacher add = new AddTeacher();
-            add.Text = "Добавить учителя";
+            AddTeacher add = new AddTeacher
+            {
+                Text = "Добавить учителя"
+            };
             if (add.ShowDialog() != DialogResult.OK)
             {
                 return;
@@ -136,8 +148,10 @@ namespace School
                 {
                     Status.Update = true;
                     Status.ID = idx;
-                    AddTeacher update = new AddTeacher();
-                    update.Text = "Обновить учителя";
+                    AddTeacher update = new AddTeacher
+                    {
+                        Text = "Обновить учителя"
+                    };
                     if (update.ShowDialog() != DialogResult.OK)
                     {
                         Status.Update = false;
@@ -161,9 +175,11 @@ namespace School
         {
             if (teachersListView.SelectedIndices.Count > 0)
             {
-                SaveFileDialog sfd = new SaveFileDialog();
-                sfd.Filter = "Word Documents (*.docx)|*.docx";
-                sfd.FileName = "export.docx";
+                SaveFileDialog sfd = new SaveFileDialog
+                {
+                    Filter = "Word Documents (*.docx)|*.docx",
+                    FileName = "export.docx"
+                };
 
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
@@ -205,6 +221,48 @@ namespace School
                 MessageBox.Show("Выберите записи которые хотите добавить в таблицу.",
                 "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void findRadioButton_Click(object sender, EventArgs e)
+        {
+            if (findTextBox.Text == "") 
+            {
+                MessageBox.Show("Поле для пойска пустое",
+                "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            List<ListViewItem> mass = new List<ListViewItem>();
+            foreach (ListViewItem itm in teachersListView.Items)
+            {
+                for (int i = 0; i < itm.SubItems.Count; i++)
+                {
+                    if (itm.SubItems[i].Text.IndexOf(findTextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        mass.Add(itm);
+                    } 
+                }
+            }
+            if (mass.Count == 0) 
+            {
+                MessageBox.Show("Совпадений не найдено",
+                "Notification", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            teachersListView.Items.Clear();
+            for (int i = 0; i < mass.Count; i++) 
+            {
+                if (teachersListView.Items.Contains(mass[i])) 
+                {
+                    continue;
+                }
+                teachersListView.Items.Add(mass[i]);
+            }
+        }
+
+        private void cancelRadioButton_Click(object sender, EventArgs e)
+        {
+            findTextBox.Text = null;
+            FillTeacherList();
         }
     }
 }
