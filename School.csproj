@@ -141,11 +141,11 @@
     <Compile Include="Views\TasksForm.Designer.cs">
       <DependentUpon>TasksForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Database.cs">
+    <Compile Include="Views\DataBase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Database.Designer.cs">
-      <DependentUpon>Database.cs</DependentUpon>
+    <Compile Include="Views\DataBase.Designer.cs">
+      <DependentUpon>DataBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\TeachersForm.cs">
       <SubType>Form</SubType>
@@ -176,8 +176,8 @@
     <EmbeddedResource Include="Views\AddTeacher.resx">
       <DependentUpon>AddTeacher.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Database.resx">
-      <DependentUpon>Database.cs</DependentUpon>
+    <EmbeddedResource Include="Views\DataBase.resx">
+      <DependentUpon>DataBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\EventsForm.resx">
       <DependentUpon>EventsForm.cs</DependentUpon>

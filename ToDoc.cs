@@ -2,12 +2,7 @@
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Serilog;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace School
 {
@@ -113,7 +108,7 @@ namespace School
                     return true;
                 }
             }
-            return true;
+            return false;
         }
     }
 }

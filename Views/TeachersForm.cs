@@ -6,7 +6,6 @@ using Serilog;
 using System.Windows.Forms;
 using Cyriller;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace School
 {
@@ -31,16 +30,26 @@ namespace School
             teachersListView.Items.Clear();
             teachersListView.GridLines = true;
             var result = new CyrNumber();
+            var Vacation = "";
+            var Sick = "";
             var teachers = _teacherService.GetTeacher();
+            DateTime date = new DateTime(2000, 01, 1, 0, 0, 0);
             foreach (var teacher in teachers)
             {
                 TimeSpan timeSpan = new TimeSpan();
+
+                if (teacher.VacationFrom != date || teacher.VacationTo != date)
+                {
+                    timeSpan = teacher.VacationTo - teacher.VacationFrom;
+                    Vacation = "с " + teacher.VacationFrom.ToString("dd.MM.yyyy") + " по " + teacher.VacationTo.ToString("dd.MM.yyyy") + " " + timeSpan.Days + " д.";
+                }
+                if (teacher.SickFrom != date || teacher.SickTo != date)
+                {
+                    timeSpan = teacher.SickTo - teacher.SickFrom;
+                    Sick = "с " + teacher.SickFrom.ToString("dd.MM.yyyy") + " по " + teacher.SickTo.ToString("dd.MM.yyyy") + " " + timeSpan.Days + " д.";
+                }
                 string hour = "";
                 string year = "";
-                timeSpan = teacher.VacationTo - teacher.VacationFrom;
-                var Vacation = "с "+teacher.VacationFrom.ToString("dd.MM.yyyy") + " по "+teacher.VacationTo.ToString("dd.MM.yyyy") +" "+timeSpan.Days+" д.";
-                timeSpan = teacher.SickTo - teacher.SickFrom;
-                var Sick = "с " + teacher.SickFrom.ToString("dd.MM.yyyy") + " по " + teacher.SickTo.ToString("dd.MM.yyyy") + " " + timeSpan.Days + " д.";
                 hour = result.Case(Int64.Parse(((int)teacher.Load).ToString()), "час", "часа", "часов");
                 year = result.Case(Int64.Parse((teacher.Experience).ToString()), "год", "года", "лет");
                 

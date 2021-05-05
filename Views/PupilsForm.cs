@@ -44,7 +44,7 @@ namespace School
                     pupil.FullName,
                     pupil.DateOfBirth.ToString("dd.MM.yyyy"),
                     pupil.Years.ToString(),
-                    pupil.Grade.ToString() + "класс",
+                    pupil.Grade.ToString() + " класс",
                     pupil.District,
                     pupil.Social,
                     pupil.PhoneNumb,

@@ -32,7 +32,8 @@ namespace School.Data
             using (var f = File.OpenText("teacher.json"))
             {
                 var json = f.ReadToEnd();
-                _teachers = JsonConvert.DeserializeObject<Teacher[]>(json, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects }).ToList();
+                _teachers = JsonConvert.DeserializeObject<Teacher[]>(json, 
+                    new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects }).ToList();
                 return JsonConvert.DeserializeObject<Teacher[]>(json,
                             new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
             }
@@ -72,7 +73,8 @@ namespace School.Data
             using (var f = File.OpenText("pupil.json"))
             {
                 var json = f.ReadToEnd();
-                _pupils = JsonConvert.DeserializeObject<Pupil[]>(json, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects }).ToList();
+                _pupils = JsonConvert.DeserializeObject<Pupil[]>(json, 
+                    new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects }).ToList();
                 return JsonConvert.DeserializeObject<Pupil[]>(json,
                             new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
             }
@@ -112,7 +114,8 @@ namespace School.Data
             using (var f = File.OpenText("event.json"))
             {
                 var json = f.ReadToEnd();
-                _events = JsonConvert.DeserializeObject<Event[]>(json, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects }).ToList();
+                _events = JsonConvert.DeserializeObject<Event[]>(json, 
+                    new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects }).ToList();
                 return JsonConvert.DeserializeObject<Event[]>(json,
                             new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
             }
@@ -152,7 +155,8 @@ namespace School.Data
             using (var f = File.OpenText("task.json"))
             {
                 var json = f.ReadToEnd();
-                _tasks = JsonConvert.DeserializeObject<Task[]>(json, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects }).ToList();
+                _tasks = JsonConvert.DeserializeObject<Task[]>(json, 
+                    new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects }).ToList();
                 return JsonConvert.DeserializeObject<Task[]>(json,
                             new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
             }

@@ -28,6 +28,7 @@ namespace School
             FillEventList();
             if (!Status.Value)
             {
+                addButton.Enabled = false;
                 deletMenuItem.Enabled = false;
                 updateMenuItem.Enabled = false;
                 deleteButton.Enabled = false;
@@ -41,8 +42,8 @@ namespace School
             eventsListView.Items.Clear();
             eventsListView.GridLines = true;
             var events = _eventService.GetEvent();
-            var pupils = _pupilService.GetPupil().Where(x => x.DateOfBirth.Month - date.Month == 1);
-            var teachers = _teacherService.GetTeacher().Where(x => x.DateOfBirth.Month - date.Month == 1);
+            var pupils = _pupilService.GetPupil().Where(x => x.DateOfBirth.Month - date.Month == 1|| x.DateOfBirth.Month - date.Month == 0);
+            var teachers = _teacherService.GetTeacher().Where(x => x.DateOfBirth.Month - date.Month == 1|| x.DateOfBirth.Month - date.Month == 0);
             foreach (var _event in events)
             {
                 var lvi = new ListViewItem(new[]

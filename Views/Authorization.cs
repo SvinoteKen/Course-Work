@@ -1,14 +1,6 @@
-﻿using School;
-using School.Services;
+﻿using School.Services;
 using System;
 using Serilog;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace School
@@ -22,7 +14,7 @@ namespace School
             Status.Enter = false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void authButton_Click(object sender, EventArgs e)
         {
             if (_authService.Authorize(loginTextBox.Text.ToString(), passwordTextBox.Text.ToString()) == true)
             {
@@ -47,7 +39,7 @@ namespace School
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void regButton_Click(object sender, EventArgs e)
         {
             Registration reg = new Registration();
             reg.ShowDialog();

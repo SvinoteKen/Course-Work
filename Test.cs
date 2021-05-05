@@ -42,8 +42,7 @@ namespace School
         }
         public bool TestDateOfBirth(string text)
         {
-            DateTime dateTime;
-            bool succeess = DateTime.TryParse(text, out dateTime);
+            bool succeess = DateTime.TryParse(text, out _);
             if (!succeess)
             {
                 MessageBox.Show("Поле \"Дата рождения\" должно иметь такой вид: \"dd.mm.yyyy\"",
@@ -54,10 +53,9 @@ namespace School
         }
         public bool TestyearOfCertificationAndCourses(string yearCertification,string yearCourses)
         {
-            int x;
             int currYear = DateTime.Now.Year;
-            bool Year1 = Int32.TryParse(yearCertification, out x);
-            bool Year2 = Int32.TryParse(yearCourses, out x);
+            bool Year1 = Int32.TryParse(yearCertification, out _);
+            bool Year2 = Int32.TryParse(yearCourses, out _);
             if (!Year1 || !Year2)
             {
                 MessageBox.Show("Поля \"Год аттестации\" и \"Год курсов\" должно иметь такой вид: \"yyyy\"",
@@ -74,25 +72,23 @@ namespace School
         }
         public bool TestDateOfReceiptAndDisposal(string dateOfReceipt, string dateOfDisposal)
         {
-            DateTime dateTime;
-            bool succeess1 = DateTime.TryParse(dateOfReceipt, out dateTime);
-            bool succeess2 = DateTime.TryParse(dateOfDisposal, out dateTime);
-            if (!succeess1)
+            bool succeess1 = DateTime.TryParse(dateOfReceipt, out _);
+            bool succeess2 = DateTime.TryParse(dateOfDisposal, out _);
+            if (!succeess1||!succeess2)
             {
+                if (dateOfDisposal == "") { return true; }
                 MessageBox.Show("Поля \"Дата приема\" и \"Дата выбытия\" должно иметь такой вид: \"dd.mm.yyyy\"",
                     "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
         }
-       public bool TestYear(string dateBirth,string years)
+        public bool TestYear(string dateBirth,string years)
         {
             DateTime currDate = DateTime.Now;
             TimeSpan Birthday = currDate - DateTime.Parse(dateBirth);
-            if ((int)(int.Parse(Birthday.Days.ToString()) / 365) != int.Parse(years))
+            if ((int)(int.Parse(Birthday.Days.ToString()) / 365.25) != int.Parse(years))
             {
-                MessageBox.Show("Дата рождения не совпадает с возрастом",
-                    "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;

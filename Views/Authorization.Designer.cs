@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.authButton = new System.Windows.Forms.Button();
+            this.regButton = new System.Windows.Forms.Button();
             this.loginTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.passwordCheckBox = new System.Windows.Forms.CheckBox();
@@ -37,25 +37,25 @@
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // authButton
             // 
-            this.button1.Location = new System.Drawing.Point(136, 349);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Войти";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.authButton.Location = new System.Drawing.Point(136, 349);
+            this.authButton.Name = "authButton";
+            this.authButton.Size = new System.Drawing.Size(87, 23);
+            this.authButton.TabIndex = 0;
+            this.authButton.Text = "Войти";
+            this.authButton.UseVisualStyleBackColor = true;
+            this.authButton.Click += new System.EventHandler(this.authButton_Click);
             // 
-            // button2
+            // regButton
             // 
-            this.button2.Location = new System.Drawing.Point(136, 416);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(87, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Регистрация";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.regButton.Location = new System.Drawing.Point(136, 416);
+            this.regButton.Name = "regButton";
+            this.regButton.Size = new System.Drawing.Size(87, 23);
+            this.regButton.TabIndex = 1;
+            this.regButton.Text = "Регистрация";
+            this.regButton.UseVisualStyleBackColor = true;
+            this.regButton.Click += new System.EventHandler(this.regButton_Click);
             // 
             // loginTextBox
             // 
@@ -111,8 +111,8 @@
             this.Controls.Add(this.passwordCheckBox);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.loginTextBox);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.regButton);
+            this.Controls.Add(this.authButton);
             this.MaximumSize = new System.Drawing.Size(355, 500);
             this.MinimumSize = new System.Drawing.Size(355, 500);
             this.Name = "Authorization";
@@ -124,8 +124,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button authButton;
+        private System.Windows.Forms.Button regButton;
         private System.Windows.Forms.TextBox loginTextBox;
         private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.CheckBox passwordCheckBox;

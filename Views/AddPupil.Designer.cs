@@ -199,7 +199,7 @@
             this.addressText.Depth = 0;
             this.addressText.Font = new System.Drawing.Font("Roboto", 12F);
             this.addressText.Location = new System.Drawing.Point(61, 450);
-            this.addressText.MaxLength = 30;
+            this.addressText.MaxLength = 100;
             this.addressText.MouseState = MaterialSkin.MouseState.OUT;
             this.addressText.Multiline = false;
             this.addressText.Name = "addressText";

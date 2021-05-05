@@ -26,5 +26,12 @@
     "Login": "1",
     "Password": "1",
     "Roles": "Admin"
+  },
+  {
+    "$id": "5",
+    "ID": 1849968876,
+    "Login": "stas",
+    "Password": "stas1234",
+    "Roles": "User"
   }
 ]

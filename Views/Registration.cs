@@ -20,7 +20,7 @@ namespace School
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void registrationButton_Click(object sender, EventArgs e)
         {
             if (loginTextBox.Text.Length > 0)
             {
@@ -38,7 +38,7 @@ namespace School
             else MessageBox.Show("Укажите логин в форме", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void cancelButton_Click(object sender, EventArgs e)
         {
             Close();
         }

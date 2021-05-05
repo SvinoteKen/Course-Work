@@ -28,6 +28,7 @@ namespace School
             FillTaskList();
             if (!Status.Value)
             {
+                addButton.Enabled = false;
                 deletMenuItem.Enabled = false;
                 updateMenuItem.Enabled = false;
                 deleteButton.Enabled = false;

@@ -618,7 +618,6 @@
         private MaterialSkin.Controls.MaterialButton okButton;
         private MaterialSkin.Controls.MaterialButton cancelButton;
         private MaterialSkin.Controls.MaterialTextBox dateOfBirthText;
-        private MaterialSkin.Controls.MaterialTextBox yearsText;
         private MaterialSkin.Controls.MaterialTextBox experienceText;
         private MaterialSkin.Controls.MaterialTextBox yearOfCertificationText;
         private MaterialSkin.Controls.MaterialTextBox yearOfCoursesText;
@@ -647,5 +646,6 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel16;
         private MaterialSkin.Controls.MaterialTextBox emailText;
         private MaterialSkin.Controls.MaterialLabel materialLabel17;
+        private MaterialSkin.Controls.MaterialTextBox yearsText;
     }
 }

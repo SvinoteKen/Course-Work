@@ -172,7 +172,7 @@
             this.Name = "DataBaseForm";
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Базы данные";
+            this.Text = "Базы данных";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DataBaseForm_FormClosing);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);

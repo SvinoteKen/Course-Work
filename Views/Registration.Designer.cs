@@ -75,7 +75,7 @@
             this.registrationButton.TabIndex = 3;
             this.registrationButton.Text = "Регистрация";
             this.registrationButton.UseVisualStyleBackColor = true;
-            this.registrationButton.Click += new System.EventHandler(this.button1_Click);
+            this.registrationButton.Click += new System.EventHandler(this.registrationButton_Click);
             // 
             // cancelButton
             // 
@@ -85,7 +85,7 @@
             this.cancelButton.TabIndex = 4;
             this.cancelButton.Text = "Отмена";
             this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.button2_Click);
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // toolTip1
             // 

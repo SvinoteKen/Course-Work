@@ -2,14 +2,7 @@
 using School.Entities;
 using School.Services;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace School
@@ -25,6 +18,28 @@ namespace School
             if (Status.Update==true)
             {
                 Teacher = _teacherService.GetTeacher().FirstOrDefault(x => x.ID == Status.ID);
+                string VacationFrom = "";
+                string VacationTo = "";
+                string SickFrom = "";
+                string SickTo = "";
+
+                DateTime Empty = new DateTime(2000, 01, 1, 0, 0, 0);
+                if (Teacher.VacationFrom != Empty)
+                {
+                    VacationFrom = Teacher.VacationFrom.ToString("dd.MM.yyyy");
+                }
+                if (Teacher.VacationTo != Empty)
+                {
+                    VacationTo = Teacher.VacationTo.ToString("dd.MM.yyyy");
+                }
+                if (Teacher.SickFrom != Empty)
+                {
+                    SickFrom = Teacher.SickFrom.ToString("dd.MM.yyyy");
+                }
+                if (Teacher.SickTo != Empty)
+                {
+                    SickTo = Teacher.SickTo.ToString("dd.MM.yyyy");
+                }
                 fullNameText.Text = Teacher.FullName;
                 postComboBox.SelectedItem = Teacher.Post;
                 dateOfBirthText.Text = Teacher.DateOfBirth.ToString("dd.MM.yyyy");
@@ -35,26 +50,56 @@ namespace School
                 phoneNumbText.Text = Teacher.PhoneNumb;
                 emailText.Text = Teacher.Email;
                 loadText.Text = Teacher.Load.ToString();
-                vacationFromText.Text = Teacher.VacationFrom.ToString("dd.MM.yyyy");
-                vacationToText.Text = Teacher.VacationTo.ToString("dd.MM.yyyy");
-                sickFromText.Text = Teacher.SickFrom.ToString("dd.MM.yyyy");
-                sickToText.Text = Teacher.SickTo.ToString("dd.MM.yyyy");
+                vacationFromText.Text = VacationFrom;
+                vacationToText.Text = VacationTo;
+                sickFromText.Text = SickFrom;
+                sickToText.Text = SickTo;
                 rankComboBox.SelectedText = Teacher.Rank;
             }
         }
 
         private void okButton_Click(object sender, EventArgs e)
         {
+            bool succeess1 = true;
+            bool succeess2 = true;
+            bool succeess3 = true;
+            bool succeess4 = true;
+            DateTime currDate = DateTime.Now;
+            TimeSpan Birthday = currDate - DateTime.Parse(dateOfBirthText.Text);
+            DateTime Empty = new DateTime(2000, 01, 1, 0, 0, 0);
             if (!test.TestFullName(fullNameText.Text)|| !test.TestPhonNumb(phoneNumbText.Text)|| !test.TestDateOfBirth(dateOfBirthText.Text)
-                || !test.TestyearOfCertificationAndCourses(yearOfCertificationText.Text, yearOfCoursesText.Text)|| !test.TestYear(dateOfBirthText.Text, yearsText.Text)
-                || !test.TestEmail(emailText.Text)) 
+                || !test.TestyearOfCertificationAndCourses(yearOfCertificationText.Text, yearOfCoursesText.Text)|| !test.TestEmail(emailText.Text)) 
             {
                 return;
             }
-            bool succeess1 = DateTime.TryParse(sickFromText.Text, out _);
-            bool succeess2 = DateTime.TryParse(sickToText.Text, out _);
-            bool succeess3 = DateTime.TryParse(vacationFromText.Text, out _);
-            bool succeess4 = DateTime.TryParse(vacationToText.Text, out _);
+            if (!test.TestYear(dateOfBirthText.Text, yearsText.Text)) 
+            {
+                if (MessageBox.Show($"Дата рождения не совпадает с возрастом. Заменить возраст на правильный: {(int)(int.Parse(Birthday.Days.ToString()) / 365.25)} ?",
+                    "Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) 
+                {
+                    yearsText.Text = ((int)(int.Parse(Birthday.Days.ToString()) / 365.25)).ToString();
+                }
+            }
+            if (sickFromText.Text == "" || sickToText.Text == "")
+            {
+                sickFromText.Text = Empty.ToString("dd.MM.yyyy");
+                sickToText.Text = Empty.ToString("dd.MM.yyyy");
+            }
+            else 
+            {
+                succeess1 = DateTime.TryParse(sickFromText.Text, out _);
+                succeess2 = DateTime.TryParse(sickToText.Text, out _);
+            }
+            if (vacationFromText.Text == "" || vacationToText.Text == "")
+            {
+                vacationFromText.Text = Empty.ToString("dd.MM.yyyy");
+                vacationToText.Text = Empty.ToString("dd.MM.yyyy");
+            }
+            else
+            {
+                succeess3 = DateTime.TryParse(vacationFromText.Text, out _);
+                succeess4 = DateTime.TryParse(vacationToText.Text, out _);
+            }
             if (!succeess1 || !succeess2 || !succeess3 || !succeess4 )
             {
                 MessageBox.Show("Поля \"Отпуск\" и \"Больничный\" должно иметь такой вид: \"dd.mm.yyyy\"",
